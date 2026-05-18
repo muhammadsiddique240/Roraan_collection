@@ -90,11 +90,87 @@ export const useStore = create<StoreState>()(
             fetchProfile(),
           ]);
 
-          const products = results[0].status === 'fulfilled' ? results[0].value : [];
-          const latestProducts = results[1].status === 'fulfilled' ? results[1].value : [];
+          let products = results[0].status === 'fulfilled' ? results[0].value : [];
+          let latestProducts = results[1].status === 'fulfilled' ? results[1].value : [];
           const orders = results[2].status === 'fulfilled' ? results[2].value : [];
           const stats = results[3].status === 'fulfilled' ? results[3].value : null;
           const user = results[4].status === 'fulfilled' ? results[4].value : null;
+
+          // Add dummy products if no real products found (Demo Mode)
+          if (products.length === 0) {
+            const dummyData = [
+              {
+                id: 'dummy-1',
+                title: 'Nike Air Jordan 1 High',
+                brand: 'Nike',
+                category: 'Sneakers',
+                size: { eu: '44', cm: '28' },
+                condition: 'Excellent',
+                price: 48500,
+                images: ['/images/dummy/product1.webp'],
+                status: 'AVAILABLE',
+                description: 'Classic high-top sneakers in excellent condition.',
+                viewCount: 154,
+                isLatest: true,
+                isNewArrival: true,
+                isNew: false,
+                createdAt: new Date().toISOString(),
+              },
+              {
+                id: 'dummy-2',
+                title: 'Adidas Forum Low',
+                brand: 'Adidas',
+                category: 'Sneakers',
+                size: { eu: '42', cm: '26.5' },
+                condition: 'Near Deadstock',
+                price: 32000,
+                images: ['/images/dummy/product2.webp'],
+                status: 'AVAILABLE',
+                description: 'Sleek white and blue Adidas Forum Low.',
+                viewCount: 89,
+                isLatest: true,
+                isNewArrival: false,
+                isNew: true,
+                createdAt: new Date().toISOString(),
+              },
+              {
+                id: 'dummy-3',
+                title: 'New Balance 550',
+                brand: 'New Balance',
+                category: 'Sneakers',
+                size: { eu: '43', cm: '27.5' },
+                condition: 'Very Good',
+                price: 28000,
+                images: ['/images/dummy/product3.webp'],
+                status: 'AVAILABLE',
+                description: 'Trendy vintage style sneakers.',
+                viewCount: 210,
+                isLatest: false,
+                isNewArrival: true,
+                isNew: false,
+                createdAt: new Date().toISOString(),
+              },
+              {
+                id: 'dummy-4',
+                title: 'Vans Old Skool Pro',
+                brand: 'Vans',
+                category: 'Sneakers',
+                size: { eu: '41', cm: '26' },
+                condition: 'Good',
+                price: 15000,
+                images: ['/images/dummy/product4.webp'],
+                status: 'AVAILABLE',
+                description: 'Durable and classic skate shoes.',
+                viewCount: 45,
+                isLatest: false,
+                isNewArrival: false,
+                isNew: false,
+                createdAt: new Date().toISOString(),
+              }
+            ];
+            products = dummyData as any;
+            latestProducts = dummyData.filter(d => d.isLatest) as any;
+          }
 
           set({ products, latestProducts, orders, dashboardStats: stats, user, isLoading: false });
         } catch (error: any) {
