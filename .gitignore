@@ -1,0 +1,40 @@
+# Environment variables
+.env
+**/.env
+.env.*
+
+# Logs
+*.log
+backend/backend.log
+frontend/frontend.log
+
+# Databases
+db.sqlite3
+**/db.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+**/venv/
+
+# Node
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+
+# Images in the root folder
+/*.webp
+/*.avif
+/*.jpeg
+/*.jpg
+/*.png
+/*.svg
+/images
+/images.jpeg
+
+# VS Code / OS
+.vscode/
+.DS_Store
