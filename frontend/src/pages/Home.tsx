@@ -44,7 +44,7 @@ export default function Home() {
             Latest Drops
           </h2>
           <p className="text-xs font-medium text-zinc-500 leading-relaxed max-w-md">
-            Fresh inventory updates from the Rooran Collection archive.
+            Fresh inventory updates from the Roraan Collection archive.
           </p>
         </div>
 

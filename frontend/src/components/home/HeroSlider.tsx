@@ -5,128 +5,71 @@ import { Link } from 'react-router-dom';
 export function HeroSlider() {
   return (
     <section className="relative h-[100svh] min-h-screen flex items-center justify-center overflow-hidden w-full">
-      {/* Layer 1: Single Background Image (z-0) */}
+      {/* Layer 1: Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center z-0"
+        className="absolute inset-0 bg-cover bg-center z-0 scale-110"
         style={{ backgroundImage: `url('/images/hero_main.png')` }}
       />
 
-      {/* Layer 2: Professional Smoke/Fog Effect - Rising from Bottom */}
+      {/* Layer 2: Heavy dark overlay to hide background text & create cinematic mood */}
+      <div className="absolute inset-0 z-[1] bg-black/70" />
 
-      {/* Fog Base Layer - Dense bottom fog that stays low */}
+      {/* Layer 3: Top vignette to fully kill the ROORAN text in image */}
       <div
-        className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
+        className="absolute inset-x-0 top-0 z-[2] pointer-events-none"
         style={{
-          height: '70%',
-          background: 'linear-gradient(to top, rgba(180,140,100,0.85) 0%, rgba(160,120,80,0.5) 30%, rgba(140,100,60,0.2) 60%, transparent 100%)',
-          animation: 'smoke-pulse 6s ease-in-out infinite',
-          filter: 'blur(30px)',
+          height: '55%',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, transparent 100%)',
         }}
       />
 
-      {/* Smoke Cloud 1 - Large left cloud rising */}
+      {/* Layer 4: Warm golden ambient glow from bottom */}
       <div
-        className="absolute z-10 pointer-events-none"
+        className="absolute inset-x-0 bottom-0 z-[2] pointer-events-none"
+        style={{
+          height: '60%',
+          background: 'linear-gradient(to top, rgba(180,140,80,0.4) 0%, rgba(160,120,60,0.2) 30%, rgba(140,100,40,0.08) 55%, transparent 100%)',
+          animation: 'smoke-pulse 6s ease-in-out infinite',
+          filter: 'blur(25px)',
+        }}
+      />
+
+      {/* Layer 5: Subtle warm fog wisps */}
+      <div
+        className="absolute z-[2] pointer-events-none"
         style={{
           bottom: '-10%',
           left: '0%',
           width: '55%',
-          height: '80%',
-          background: 'radial-gradient(ellipse at center, rgba(200,165,120,0.7) 0%, rgba(180,140,90,0.4) 35%, rgba(160,120,70,0.15) 60%, transparent 75%)',
+          height: '70%',
+          background: 'radial-gradient(ellipse at center, rgba(200,165,120,0.35) 0%, rgba(180,140,90,0.15) 40%, transparent 70%)',
           animation: 'smoke-rise-1 12s ease-in-out infinite',
           filter: 'blur(40px)',
         }}
       />
-
-      {/* Smoke Cloud 2 - Large right cloud rising */}
       <div
-        className="absolute z-10 pointer-events-none"
+        className="absolute z-[2] pointer-events-none"
         style={{
           bottom: '-15%',
           right: '0%',
           width: '55%',
-          height: '85%',
-          background: 'radial-gradient(ellipse at center, rgba(190,150,100,0.65) 0%, rgba(170,130,85,0.35) 35%, rgba(150,110,65,0.12) 60%, transparent 75%)',
+          height: '75%',
+          background: 'radial-gradient(ellipse at center, rgba(190,150,100,0.3) 0%, rgba(170,130,85,0.12) 40%, transparent 70%)',
           animation: 'smoke-rise-2 15s ease-in-out infinite',
           filter: 'blur(45px)',
           animationDelay: '2s',
         }}
       />
 
-      {/* Smoke Cloud 3 - Center cloud */}
+      {/* Layer 6: Golden edge light effects */}
       <div
-        className="absolute z-10 pointer-events-none"
+        className="absolute inset-0 z-[3] pointer-events-none"
         style={{
-          bottom: '-5%',
-          left: '20%',
-          width: '55%',
-          height: '75%',
-          background: 'radial-gradient(ellipse at center, rgba(210,175,130,0.6) 0%, rgba(190,155,110,0.3) 40%, rgba(170,135,90,0.1) 65%, transparent 80%)',
-          animation: 'smoke-rise-3 10s ease-in-out infinite',
-          filter: 'blur(35px)',
-          animationDelay: '4s',
+          background: 'radial-gradient(ellipse at 50% 80%, rgba(212,175,55,0.08) 0%, transparent 60%)',
         }}
       />
 
-      {/* Smoke Cloud 4 - Extra fog wisps left */}
-      <div
-        className="absolute z-10 pointer-events-none"
-        style={{
-          bottom: '0%',
-          left: '5%',
-          width: '45%',
-          height: '60%',
-          background: 'radial-gradient(ellipse at center, rgba(220,185,140,0.5) 0%, rgba(200,165,120,0.25) 40%, transparent 70%)',
-          animation: 'smoke-rise-1 18s ease-in-out infinite',
-          filter: 'blur(50px)',
-          animationDelay: '6s',
-        }}
-      />
-
-      {/* Smoke Cloud 5 - Extra fog wisps right */}
-      <div
-        className="absolute z-10 pointer-events-none"
-        style={{
-          bottom: '-8%',
-          right: '5%',
-          width: '50%',
-          height: '65%',
-          background: 'radial-gradient(ellipse at center, rgba(215,180,135,0.55) 0%, rgba(195,160,115,0.28) 38%, transparent 72%)',
-          animation: 'smoke-rise-2 14s ease-in-out infinite',
-          filter: 'blur(42px)',
-          animationDelay: '3s',
-        }}
-      />
-
-      {/* Smoke Cloud 6 - Top wisps that drift */}
-      <div
-        className="absolute z-10 pointer-events-none"
-        style={{
-          bottom: '20%',
-          left: '10%',
-          width: '80%',
-          height: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(200,170,130,0.3) 0%, rgba(180,150,110,0.12) 45%, transparent 70%)',
-          animation: 'smoke-drift 20s ease-in-out infinite, smoke-spread 8s ease-in-out infinite',
-          filter: 'blur(55px)',
-        }}
-      />
-
-      {/* Dense bottom edge glow - warm amber fog pooling at bottom */}
-      <div
-        className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
-        style={{
-          height: '35%',
-          background: 'linear-gradient(to top, rgba(200,160,110,0.9) 0%, rgba(180,140,90,0.6) 25%, rgba(160,120,70,0.25) 55%, transparent 100%)',
-          filter: 'blur(20px)',
-          animation: 'smoke-pulse 5s ease-in-out infinite alternate',
-        }}
-      />
-
-      {/* Dark gradient overlay to maintain text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/15 z-10" />
-
-      {/* Layer 3: Content (z-20) */}
+      {/* Layer 7: Content */}
       <div className="relative z-20 max-w-[1600px] mx-auto px-6 lg:px-12 w-full flex flex-col items-center justify-center h-full text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -134,58 +77,94 @@ export function HeroSlider() {
           transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
           className="max-w-5xl w-full flex flex-col items-center"
         >
-          {/* Luxury Tagline */}
-          <div className="flex items-center gap-3 px-6 py-2.5 border border-white/40 backdrop-blur-md bg-white/5 w-fit mb-10 md:mb-12 rounded-full shadow-2xl">
-            <span className="text-[10px] font-bold tracking-[0.35em] text-white uppercase">
-              Curated Excellence
-            </span>
-          </div>
+          {/* Elegant Gold Line Divider */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+            className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-8 md:mb-10"
+          />
 
-          {/* Premium Headline with Elegant Font */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] font-serif font-light tracking-tight mb-6 md:mb-8 text-white uppercase overflow-hidden px-2">
+          {/* Brand Name Accent */}
+          <motion.span
+            initial={{ opacity: 0, letterSpacing: '0.8em' }}
+            animate={{ opacity: 1, letterSpacing: '0.5em' }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-[10px] md:text-xs font-semibold tracking-[0.5em] text-[#d4af37] uppercase mb-6 md:mb-8"
+          >
+            Roraan Collection
+          </motion.span>
+
+          {/* Premium Headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.92] font-serif font-light tracking-tight mb-6 md:mb-8 text-white uppercase overflow-hidden px-2">
             <motion.span
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.23, 1, 0.32, 1] }}
               className="block"
               style={{
                 fontFamily: '"Playfair Display", "Cormorant Garamond", Georgia, serif',
                 fontWeight: 300,
-                letterSpacing: '0.02em'
+                letterSpacing: '0.04em',
+                textShadow: '0 4px 30px rgba(0,0,0,0.5)',
               }}
             >
               PREMIUM<br className="sm:hidden" /> THRIFTED<br className="sm:hidden" /> BRANDED<br className="sm:hidden" /> SHOES
             </motion.span>
           </h1>
 
-          {/* Premium Sub-headline */}
+          {/* Gold Divider Below Title */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.2, delay: 0.7, ease: [0.23, 1, 0.32, 1] }}
+            className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-6 md:mb-8"
+          />
+
+          {/* Sub-headline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
-            className="text-gray-100 mb-8 md:mb-10 text-base md:text-lg font-light tracking-wide max-w-3xl leading-relaxed"
-            style={{ fontFamily: '"Cormorant Garamond", Georgia, serif' }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+            className="text-gray-300 mb-10 md:mb-12 text-sm md:text-lg font-light tracking-wider max-w-xl leading-relaxed"
+            style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: 'clamp(14px, 2.5vw, 20px)' }}
           >
             Find your perfect pair — one-of-a-kind pieces at unbeatable prices.
           </motion.p>
 
-          {/* Elegant CTA Buttons */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9 }}
-            className="flex flex-wrap items-center justify-center gap-6"
+            transition={{ duration: 0.7, delay: 1 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-md sm:max-w-none"
           >
             <Link to="/shop" className="w-full sm:w-auto group">
-              <button className="w-full sm:w-auto h-14 md:h-16 px-10 text-[11px] uppercase font-semibold tracking-[0.25em] bg-white text-black hover:bg-gray-50 transition-all duration-500 inline-flex items-center justify-center shadow-2xl hover:shadow-white/20 hover:scale-[1.02]">
+              <button className="w-full sm:w-auto h-14 md:h-16 px-10 text-[11px] uppercase font-semibold tracking-[0.25em] bg-white text-black hover:bg-[#d4af37] hover:text-black transition-all duration-500 inline-flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(212,175,55,0.3)] hover:scale-[1.02]">
                 SHOP NOW <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
               </button>
             </Link>
-            <Link to="/shop" className="w-full sm:w-auto group">
-              <button className="w-full sm:w-auto h-14 md:h-16 px-10 text-[11px] uppercase font-semibold tracking-[0.25em] border-2 border-white/80 bg-transparent text-white hover:bg-white hover:text-black transition-all duration-500 shadow-2xl hover:scale-[1.02]">
-                BROWSE CATEGORIES
-              </button>
-            </Link>
+            <button
+              onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="w-full sm:w-auto h-14 md:h-16 px-10 text-[11px] uppercase font-semibold tracking-[0.25em] border border-[#d4af37]/50 bg-transparent text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.05)] hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] hover:scale-[1.02]"
+            >
+              BROWSE CATEGORIES
+            </button>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <span className="text-[9px] uppercase tracking-[0.4em] text-white/40 font-medium">Scroll</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-[1px] h-8 bg-gradient-to-b from-[#d4af37]/60 to-transparent"
+            />
           </motion.div>
         </motion.div>
       </div>
