@@ -14,14 +14,21 @@ export function HeroSlider() {
       {/* Layer 2: Heavy dark overlay to hide background text & create cinematic mood */}
       <div className="absolute inset-0 z-[1] bg-black/70" />
 
-      {/* Layer 3: Top vignette to fully kill the ROORAN text in image */}
+      {/* Layer 3: Strong Top vignette to fully kill the ROORAN text in image */}
       <div
         className="absolute inset-x-0 top-0 z-[2] pointer-events-none"
         style={{
-          height: '55%',
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, transparent 100%)',
+          height: '65%',
+          background: 'linear-gradient(to bottom, rgba(5,5,5,1) 0%, rgba(5,5,5,1) 30%, rgba(5,5,5,0.8) 55%, transparent 100%)',
         }}
       />
+
+      {/* Layer 3.5: Corrected Watermark Text (Replaces the hidden image text) */}
+      <div className="absolute top-[12%] lg:top-[8%] left-0 w-full flex justify-center z-[2] pointer-events-none select-none overflow-hidden mix-blend-overlay">
+        <span className="text-[18vw] md:text-[12vw] font-black tracking-[0.15em] text-white/[0.03] uppercase">
+          RORAAN
+        </span>
+      </div>
 
       {/* Layer 4: Warm golden ambient glow from bottom */}
       <div
